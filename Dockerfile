@@ -19,7 +19,6 @@ RUN mvn package -U -DskipTests
 
 
 FROM azul/zulu-openjdk-alpine:11
-VOLUME /tmp
 ARG JAR_FILE=reactive-service-0.0.1-SNAPSHOT.jar
 COPY --from=builder /usr/src/app/target/$JAR_FILE app.jar
 
