@@ -27,12 +27,12 @@ public class TestService {
     public Mono<Void> doPropagatedSmallWork() {
         Mono<Void> blockingWrapper = Mono.fromRunnable(() -> {
             try {
+                log.info("Doing propagated small work!!!");
                 Thread.sleep(200);
             } catch (InterruptedException e) {
                 log.error("doPropagatedSmallWork() Error: {}", e.getMessage(), e);
             }
         });
-        log.info("Doing propagated small work!!!");
         return blockingWrapper.subscribeOn(Schedulers.elastic());
     }
 
@@ -49,12 +49,12 @@ public class TestService {
     public Mono<Void> doPropagatedMediumWork() {
         Mono<Void> blockingWrapper = Mono.fromRunnable(() -> {
             try {
+                log.info("Doing propagated medium work!!!");
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 log.error("doPropagatedMediumWork() Error: {}", e.getMessage(), e);
             }
         });
-        log.info("Doing propagated medium work!!!");
         return blockingWrapper.subscribeOn(Schedulers.elastic());
     }
 
