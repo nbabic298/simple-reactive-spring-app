@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: reactive-service
+
+logging:
+  level:
+    io:
+      codifica:
+        test:
+          simple:
+            reactiveservice: INFO
