@@ -11,16 +11,18 @@ import reactor.netty.ReactorNetty;
 public class ReactiveServiceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ReactiveServiceApplication.class, args);
 
+		System.setProperty("reactor.netty.ioWorkerCount", "" + Runtime.getRuntime().availableProcessors() * 2);
 		log.info("Java runtime available processors: {}", Runtime.getRuntime().availableProcessors());
 		log.info("Netty runtime available processors: {}", NettyRuntime.availableProcessors());
 		log.info("reactor.netty.ioWorkerCount = {}", System.getProperty(ReactorNetty.IO_WORKER_COUNT));
 		log.info("reactor.netty.ioSelectCount = {}", System.getProperty(ReactorNetty.IO_SELECT_COUNT));
 		log.info("reactor.netty.pool.maxConnections = {}", System.getProperty(ReactorNetty.POOL_MAX_CONNECTIONS));
-		log.info("reactor.ipc.netty.workerCount = {}", System.getProperty("reactor.ipc.netty.workerCount"));
-		log.info("{}", System.getenv());
+
 		log.info("Available memory: {} bytes", Runtime.getRuntime().totalMemory());
+
+		SpringApplication.run(ReactiveServiceApplication.class, args);
+
 	}
 
 }
