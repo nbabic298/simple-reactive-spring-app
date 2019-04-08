@@ -9,3 +9,10 @@ logging:
         test:
           simple:
             reactiveservice: INFO
+
+feature:
+  netty:
+    ioWorker:
+      count: 4
+      custom:
+        enable: false
